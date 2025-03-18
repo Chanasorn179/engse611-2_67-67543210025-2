@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stylish Image Gallery</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        padding: 40px;
+        background-color: #e0f7fa;
+      }
+      h1 {
+        color: #61688a;
+        margin-bottom: 30px;
+      }
+      .gallery-container {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        background: white;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .main-image {
+        width: 500px;
+        height: 300px;
+        margin-left: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        object-fit: cover;
+        transition: transform 0.3s;
+      }
+      .main-image:hover {
+        transform: scale(1.02);
+      }
+      .thumbnails {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .thumbnail {
+        width: 100px;
+        height: 60px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+        object-fit: cover;
+      }
+      .thumbnail:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Memory Gallery</h1>
+    <div class="gallery-container">
+      <div class="thumbnails">
+        <img
+          class="thumbnail"
+          src="https://cdn.pixabay.com/photo/2017/10/28/14/56/dolomites-2897227_1280.jpg"
+          alt="Thumbnail 1"
+        />
+        <img
+          class="thumbnail"
+          src="https://cdn.pixabay.com/photo/2023/11/14/14/59/mountains-8387889_1280.jpg"
+          alt="Thumbnail 2"
+        />
+        <img
+          class="thumbnail"
+          src="https://cdn.pixabay.com/photo/2016/12/11/12/02/mountains-1899264_1280.jpg"
+          alt="Thumbnail 3"
+        />
+        <img
+          class="thumbnail"
+          src="https://cdn.pixabay.com/photo/2018/04/01/19/15/fantasy-3281842_1280.jpg"
+          alt="Thumbnail 4"
+        />
+      </div>
+      <img
+        id="mainImage"
+        class="main-image"
+        src="https://cdn.pixabay.com/photo/2016/07/02/12/21/eclipse-1492818_1280.jpg"
+        alt="Main Image"
+      />
+    </div>
+
+    <script>
+      const mainImage = document.getElementById("mainImage");
+      const thumbnails = document.querySelectorAll(".thumbnail");
+
+      thumbnails.forEach((thumbnail) => {
+        thumbnail.addEventListener("click", () => {
+          const newSrc = thumbnail.src.replace("/100/60", "/500/300");
+          mainImage.src = newSrc;
+        });
+      });
+    </script>
+  </body>
+</html>
